@@ -230,6 +230,9 @@ class Box:
         self.H = H
         self.xvec = np.linspace(0,L,Nx)
 
+
+        
+
         class bottomBoundary(SubDomain):
             def inside(self, x, on_boundary):
                 return bool(on_boundary and near(x[1], 0.0) )
@@ -276,6 +279,15 @@ class Box:
 
         self.bounds = MeshFunction("size_t", self.mesh ,self.mesh.topology().dim()-1,0)
         self.bounds.set_all(0)
+
+
+    def topf(self,x):
+        return np.ones_like(x)
+
+    def bottomf(self,x):
+        return np.zeros_like(x)
+
+
         
 
 

@@ -14,7 +14,7 @@ import VoigtFenics as vf
 import FenicsTransforms as ft
 import fenicsinverse as fi
 import MartinVoigt as mv
-import golf as g
+#import golf as g
 
 
 
@@ -165,21 +165,21 @@ class leoanisotropic:
         return mu/muiso0000
 
 
-    def Golf(self,fabric):
+    # def Golf(self,fabric):
 
-        a2np = ft.FenicsMatrix2Numpy(fabric.a2,self.F)
+    #     a2np = ft.FenicsMatrix2Numpy(fabric.a2,self.F)
 
-        munp = g.Golf(a2np,self.gamma,self.beta)
+    #     munp = g.Golf(a2np,self.gamma,self.beta)
 
-        mu = Function(self.T4)
-        mu = ft.Numpy2Fenics(mu,munp[:,:self.ndim,:self.ndim,:self.ndim,:self.ndim])
+    #     mu = Function(self.T4)
+    #     mu = ft.Numpy2Fenics(mu,munp[:,:self.ndim,:self.ndim,:self.ndim,:self.ndim])
         
-        #Normalise by isotropic 0000 value
-        a2iso = np.array([[1./3, 0., 0.],[0, 1./3, 0],[0, 0, 1./3]])
-        muiso0000 = g.golfsingle(a2iso,self.gamma,self.beta)[0,0,0,0]
+    #     #Normalise by isotropic 0000 value
+    #     a2iso = np.array([[1./3, 0., 0.],[0, 1./3, 0],[0, 0, 1./3]])
+    #     muiso0000 = g.golfsingle(a2iso,self.gamma,self.beta)[0,0,0,0]
 
 
-        return mu/muiso0000
+    #     return mu/muiso0000
         
 
 def InvBoehlernp(a2,a4,xi1,xi2):

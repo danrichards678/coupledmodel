@@ -36,7 +36,7 @@ FunctionSpaces.Init(domain,element_pair=0,fabricdegree=0)
 #bcs = domain.ExpressionRight(domain.W,"3*1.0*20*(x[1]-0.5*pow(x[1],2))")
 
 # Init surface
-surf = SurfaceSolve2.leoline(domain,1.0,n=n,h0=True)
+surf = SurfaceSolve2.leoline(domain,1.0,n=n,h0=False)
 surf.UpdateMesh(domain.mesh)
 #bcs = surf.updatebcs(domain)
 bcs = domain.NoSlip(domain.W)
